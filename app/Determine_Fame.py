@@ -3,9 +3,12 @@ from sklearn.feature_extraction.text import CountVectorizer
 import pandas as pd
 import selenium.common.exceptions
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.firefox.service import Service as FirefoxService
-from selenium.webdriver.edge.service import Service as EdgeService
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+
+
+
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
@@ -18,11 +21,11 @@ unique_artists = {}
 from selenium.webdriver.chrome.options import Options
 
 options = Options()
-options.add_argument('--headless')
+options.add_argument('--headless')  # Run in headless mode
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(service=Service('/usr/bin/chromedriver'), options=options)
 
 
 
